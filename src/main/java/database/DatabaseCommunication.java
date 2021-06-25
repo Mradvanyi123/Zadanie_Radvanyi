@@ -46,30 +46,4 @@ public class DatabaseCommunication {
         }
     }
 
-
-    public static void main(String[] args) {
-        DatabaseCommunication dbc=new DatabaseCommunication();
-//        dbc.insert("HU","2012-12-01");
-//        dbc.insert("HU","2012-12-01");
-//        dbc.insert("HU","2012-12-01");
-//
-//        dbc.insert("SK","2012-12-01");
-//        dbc.insert("SK","2012-12-01");
-//
-//        dbc.insert("EN","2012-12-01");
-//        dbc.insert("EN","2012-12-01");
-//        dbc.insert("EN","2012-12-01");
-//        dbc.insert("EN","2012-12-01");
-//        dbc.insert("EN","2012-12-01");
-//        dbc.insert("EN","2012-12-01");
-//
-//
-//        dbc.insert("US","2012-12-01");
-//        dbc.insert("US","2012-12-02");
-//        dbc.insert("US","2012-12-02");
-//        dbc.insert("US","2012-12-02");
-//        dbc.insert("US","2012-12-02");
-//        dbc.insert("US","2012-12-02");
-        dbc.select("2012-12-01");
-    }
 }
