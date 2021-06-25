@@ -21,6 +21,8 @@ public class LoginLogsAggService {
         //Thread control is given to executor service.
         server.setExecutor(java.util.concurrent.Executors.newCachedThreadPool());
         server.start();
+
+
     }
 
 }
