@@ -16,12 +16,12 @@ import java.util.Date;
 public class LoginServiceHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
-        System.out.println("LoginServiceHandler");
+//        System.out.println("LoginServiceHandler");
         OutputStream os = t.getResponseBody();
         DatabaseCommunication dbc = new DatabaseCommunication();
         LocationServiceHandler lsh= new LocationServiceHandler();
         if (t.getRequestMethod().equalsIgnoreCase("POST")) {
-            System.out.println("POST");
+//            System.out.println("POST");
             String response;
             try {
                 // get country byIp
@@ -42,8 +42,6 @@ public class LoginServiceHandler implements HttpHandler {
         }
         os.close();
     }
-
-
 
     public String getIpAsString(InputStream body){
         String value = "{}";

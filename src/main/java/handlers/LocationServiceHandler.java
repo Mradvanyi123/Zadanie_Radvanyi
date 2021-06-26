@@ -11,8 +11,7 @@ import java.util.Locale;
 
 public  class LocationServiceHandler  {
     public String getCountryFromLocation(String ip) throws IOException, GeoIp2Exception {
-        System.out.println("getCountryFromLocation");
-
+//        System.out.println("getCountryFromLocation");
         String dbLocation = "/home/radvanyi/IdeaProjects/Zadanie/src/main/java/GeoLite2-City_20210615/GeoLite2-City.mmdb";
 
         File database = new File(dbLocation);
@@ -32,7 +31,7 @@ public  class LocationServiceHandler  {
         return country;
     }
     public String convertCountryNameToISOCode(String countryName){
-        System.out.println("convertCountryNameToISOCode");
+//        System.out.println("convertCountryNameToISOCode");
         String countryCode="";
         String[] countryCodes = Locale.getISOCountries();
         for (String cd : countryCodes){

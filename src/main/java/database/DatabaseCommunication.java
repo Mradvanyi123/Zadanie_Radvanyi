@@ -1,5 +1,8 @@
 package database;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.sql.*;
 
 public class DatabaseCommunication {
@@ -31,19 +34,36 @@ public class DatabaseCommunication {
         }
     }
 
-    public void select(String dateOfStatistics){
-        String sql = "SELECT country, count(country)as visits FROM logins where dateOfLogin==? group by country ";
-
+    public String select(String dateOfStatistics,Integer limitOfResults){
+        String sql = "SELECT dateOfLogin,country, count(country)as logins FROM logins where dateOfLogin==? group by country limit ?";
+        String result = null;
         try (Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, dateOfStatistics);
+            pstmt.setString(1,dateOfStatistics);
+            pstmt.setInt(2,limitOfResults);
+//            System.out.println(pstmt);
             ResultSet rs  = pstmt.executeQuery();
+
+            JSONArray jsonArray = new JSONArray();
+            int order=1;
             while (rs.next()) {
-                System.out.println("Country: "+rs.getString("country")+"  number of visits "+ rs.getInt("visits"));
+//                System.out.println("Date: "+rs.getString("dateOfLogin")+"Country: "+rs.getString("country")+"  number of logins "+ rs.getInt("logins"));
+                JSONObject obj = new JSONObject();
+                obj.put("date",rs.getString("dateOfLogin"));
+                obj.put("order",order);
+                obj.put("country",rs.getString("country"));
+                obj.put("logins",rs.getString("logins"));
+                order++;
+                jsonArray.put(obj);
             }
-            System.out.println(rs);
+
+            result=jsonArray.toString();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return result;
     }
 
 }
